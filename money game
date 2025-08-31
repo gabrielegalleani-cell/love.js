@@ -1,0 +1,23 @@
+local money = 0
+local button = {x = 100, y = 100, w = 200, h = 60}
+
+function love.load()
+    love.window.setTitle("Gioco dei Dollari")
+    love.window.setMode(400, 300)
+end
+
+function love.draw()
+    love.graphics.setColor(1, 1, 1)
+    love.graphics.rectangle("line", button.x, button.y, button.w, button.h, 10, 10)
+    love.graphics.printf("Ottieni 1$", button.x, button.y + 20, button.w, "center")
+    love.graphics.print("Dollari: " .. money, 150, 200)
+end
+
+function love.mousepressed(x, y, buttonPressed)
+    if buttonPressed == 1 then
+        if x > button.x and x < button.x + button.w and
+           y > button.y and y < button.y + button.h then
+            money = money + 1
+        end
+    end
+end
